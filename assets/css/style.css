@@ -1,11 +1,49 @@
-.jumbotron {
-	background-image: url(https://mahb.stanford.edu/wp-content/uploads/2017/06/Climate-Change-Data-1.jpg);
-	background-size: 100% 100%;
-	height: 300px;
-	text-align: center;
-	font-size: 500%;
-	font-weight: bolder;
-	color: white;
+body {
+  font-family: "Roboto", sans-serif;
+  color: black;
+  margin:0;
+  background:cover;
+}
 
+header {
+  margin-top: 25px;
+  height:80px;
+  color: white;
+  margin-bottom: 55px;
+}
 
+.row {
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+header h1 {
+  line-height: 1;
+  top:24px;
+  text-align: center;
+}
+
+header .question-and-score {
+  font-size: 20px;
+  font-weight: 600px;
+  color:black;
+  background: none;
+}
+
+.question-and-score ul {
+  text-align:center;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.question-and-score li {
+  display: inline-block;
+  padding:0 2%;
+}
+
+.question-and-score li {
+  display: inline-block;
+  padding:0 2%;
 }

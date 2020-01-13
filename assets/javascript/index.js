@@ -47,7 +47,7 @@ $(document).ready(function() {
 
 	/**
 	 *  @var questionInt
-	 *  @description questionInt will hold the setInterval when we start the trivia game
+	 *  @description questionInt will hold the setInterval when we start the quiz
 	 */
 	let questionInt;
 
@@ -93,6 +93,22 @@ $(document).ready(function() {
 
 //  FUNCTIONS
 //  ====================
+
+	function updateQuestionAndScore() {
+  		if (count + 1 >= questionsArr.length) {
+			const html = $(`<ul>
+      	<li id="js-answered">Question: ${questionsArr.length} / ${questionsArr.length}</li>
+      	<li id="js-score">Score: ${correctCount} / ${questionsArr.length} </li>
+    	</ul>`);
+			$(".question-and-score").html(html);
+		} else {
+  			const html = $(`<ul>
+      	<li id="js-answered">Questions Number: ${count + 1} / ${questionsArr.length}</li>
+      	<li id="js-score">Score: ${correctCount} / ${questionsArr.length} </li>
+    	</ul>`);
+			$(".question-and-score").html(html);
+		}
+}
 
 	/**
 	 * @function correctResponse
@@ -142,6 +158,7 @@ $(document).ready(function() {
 	}
 
 	function showGameOver () {
+		updateQuestionAndScore();
 		$("#timer").empty();
 		$("#answers").empty();
 		$("#response").empty();
@@ -160,6 +177,7 @@ $(document).ready(function() {
 	}
 
 	function stop() {
+		updateQuestionAndScore();
 		$("#answers").empty();
 		$("#question").html("<h2>Out of Time!</h2>");
 		$("#question").append("<div> The correct answer was: " + questionsArr[count].correctAnswer + "</div");
@@ -192,6 +210,7 @@ $(document).ready(function() {
 
 	function showQuestion() {
 		timerRestart();
+		updateQuestionAndScore();
 		$("#answers").empty();
 		$("#response").empty();
 		$("#question").html(questionsArr[count].question)
