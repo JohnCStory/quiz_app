@@ -126,7 +126,10 @@ $(document).ready(function() {
 			setTimeout(showGameOver,3000);
 		};
 		if (count < questionsArr.length) {
-			setTimeout(showQuestion,3000);
+		$("#question").append("<br><button class='next-button'><strong>Next</strong></button>")
+		$(".next-button").on("click", function(){
+			showQuestion();
+		});
 		};
 	}
 
@@ -142,7 +145,10 @@ $(document).ready(function() {
 			setTimeout(showGameOver,3000);
 		};
 		if(count < questionsArr.length) {
-			setTimeout(showQuestion,3000);
+		$("#question").append("<button class='next-button'><strong>Next</strong></button>")
+		$(".next-button").on("click", function(){
+			showQuestion();
+		});
 		};
 	}
 
@@ -181,7 +187,6 @@ $(document).ready(function() {
 		$("#answers").empty();
 		$("#question").html("<h2>Out of Time!</h2>");
 		$("#question").append("<div> The correct answer was: " + questionsArr[count].correctAnswer + "</div");
-		$("#question").append("<img src='" + questionsArr[count].correctLink + "' width='600' height='400'>");
 		clearInterval(questionInt);
 		unansweredCount++;
 		count++;
@@ -217,11 +222,17 @@ $(document).ready(function() {
 		for (var i = 0; i < questionsArr[count].possibleAnswers.length; i++) {
 			$("#answers").append("<div><button class='option-button' data-name='"+ questionsArr[count].possibleAnswers[i]+"'>" + questionsArr[count].possibleAnswers[i] + "</button></div>");
 		};
+		$("#answers").append("<button class='submit-button'><strong>Submit</strong></button>");
 
 
 		$(".option-button").on("click",function(){
 			userAnswer = $(this).attr("data-name");
-				if (userAnswer === questionsArr[count].correctAnswer) {
+			$(this).toggleClass('red');
+		});
+
+		$(".submit-button").on("click",function(){
+
+			if (userAnswer === questionsArr[count].correctAnswer) {
 					correctResponse()
 				}
 

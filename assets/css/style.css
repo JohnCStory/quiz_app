@@ -1,15 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 1%;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   color: black;
   margin:0;
-  background:cover;
+  background:#4D6FB3;
 }
 
 header {
   margin-top: 25px;
   height:80px;
-  color: white;
+  color: #B38E3B;
   margin-bottom: 55px;
+}
+
+#game {
+  text-align: center;
 }
 
 .row {
@@ -46,4 +57,9 @@ header .question-and-score {
 .question-and-score li {
   display: inline-block;
   padding:0 2%;
+}
+
+.red
+{
+    background-color:red;
 }
