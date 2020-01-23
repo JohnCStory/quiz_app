@@ -35,6 +35,20 @@ $(document).ready(function() {
                 "SELECT UNIQUE NAMES FROM quiz_users;","SELECT NAME FROM quiz_users;"],
 			correctAnswer: "SELECT DISTINCT NAME FROM quiz_users;",
 			correctLink: "https://www.postgresqltutorial.com/postgresql-select-distinct/",
+		},
+
+		{
+			question: "What is the correct command to create a table?",
+			possibleAnswers: ["MAKE TABLE;", "CREATE TABLE", "OPEN TABLE", "SPAWN TABLE"],
+			correctAnswer: "CREATE TABLE",
+			correctLink: "https://www.postgresql.org/docs/9.1/sql-createtable.html",
+		},
+
+		{
+			question: "What keyword adds the datasets of multible queries?",
+			possibleAnswers: ["UNION", "JOIN", "APPEND", "NEW"],
+			correctAnswer: "UNION",
+			correctLink: "https://www.postgresqltutorial.com/postgresql-union/",
 		}
 
 	];//closing out questionsArr
@@ -123,7 +137,7 @@ $(document).ready(function() {
 		count++;
 		clearInterval(questionInt);
 		if(count === questionsArr.length) {
-			setTimeout(showGameOver,3000);
+			showGameOver();
 		};
 		if (count < questionsArr.length) {
 		$("#question").append("<br><button class='next-button'><strong>Next</strong></button>")
@@ -137,12 +151,12 @@ $(document).ready(function() {
 		$("#answers").empty();
 		$("#question").html("<h2>Incorrect</h2>");
 		$("#question").append("<div> The correct answer was: " + questionsArr[count].correctAnswer + "</div");
-		$("#question").append("<a href='"+ questionsArr[count].correctLink +"' + target='_blank'>see reference</a>");
+		$("#question").append("<a href='"+ questionsArr[count].correctLink +"' + target='_blank'>see reference</a></<br>>");
 		incorrectCount++;
 		count++;
 		clearInterval(questionInt);
 		if(count === questionsArr.length) {
-			setTimeout(showGameOver,3000);
+			showGameOver();
 		};
 		if(count < questionsArr.length) {
 		$("#question").append("<button class='next-button'><strong>Next</strong></button>")
@@ -165,7 +179,6 @@ $(document).ready(function() {
 
 	function showGameOver () {
 		updateQuestionAndScore();
-		$("#timer").empty();
 		$("#answers").empty();
 		$("#response").empty();
 		$("#question").html("<h2>All done, here's how you did:</div>")
@@ -176,51 +189,18 @@ $(document).ready(function() {
 		});
 	}
 
-	function timerRestart() {
-		number = 10
-		$("#timer").html("<span>" + number + " seconds remaining</span>");
-		questionInt = setInterval(decrement, 1000)
-	}
-
-	function stop() {
-		updateQuestionAndScore();
-		$("#answers").empty();
-		$("#question").html("<h2>Out of Time!</h2>");
-		$("#question").append("<div> The correct answer was: " + questionsArr[count].correctAnswer + "</div");
-		clearInterval(questionInt);
-		unansweredCount++;
-		count++;
-		//  if no more questions left, show end screen
-		if (count === questionsArr.length) {
-			setTimeout(showGameOver, 3000);
-		}
-		// else show next question
-		else {
-			setTimeout(showQuestion, 3000);
-		};
-	};
-
 
 
 	// populates fields with the first question
-	function decrement() {
-		number--
-		$("#timer").html("<span>" + number + " seconds remaining</span>");
-		if (number == 0) {
-				stop();
-			}
-
-		}
 
 
 	function showQuestion() {
-		timerRestart();
 		updateQuestionAndScore();
 		$("#answers").empty();
 		$("#response").empty();
 		$("#question").html(questionsArr[count].question)
 		for (var i = 0; i < questionsArr[count].possibleAnswers.length; i++) {
-			$("#answers").append("<div><button class='option-button' data-name='"+ questionsArr[count].possibleAnswers[i]+"'>" + questionsArr[count].possibleAnswers[i] + "</button></div>");
+			$("#answers").append("<input type='radio' class='option-button' data-name='"+ questionsArr[count].possibleAnswers[i]+"'>" + questionsArr[count].possibleAnswers[i] + "</br>");
 		};
 		$("#answers").append("<button class='submit-button'><strong>Submit</strong></button>");
 

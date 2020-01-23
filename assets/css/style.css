@@ -7,7 +7,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  color: black;
+  color: lightgrey;
   margin:0;
   background:#4D6FB3;
 }
@@ -15,7 +15,7 @@ body {
 header {
   margin-top: 25px;
   height:80px;
-  color: #B38E3B;
+  color: lightgoldenrodyellow;
   margin-bottom: 55px;
 }
 
@@ -39,7 +39,7 @@ header h1 {
 header .question-and-score {
   font-size: 20px;
   font-weight: 600px;
-  color:black;
+  color:whitesmoke;
   background: none;
 }
 
@@ -62,4 +62,12 @@ header .question-and-score {
 .red
 {
     background-color:red;
+}
+
+.submit-button {
+	padding: 4px;
+}
+
+#startButton {
+	padding: 4px;
 }
