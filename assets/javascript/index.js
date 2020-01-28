@@ -131,7 +131,7 @@ $(document).ready(function() {
 	function correctResponse() {
 		$("#answers").empty();
 		$("#question").html("<h2>Correct!</h2>");
-		$("#question").append("<a href='"+ questionsArr[count].correctLink +"' + target='_blank'>see reference</a>");
+		$("#question").append("<a href='"+ questionsArr[count].correctLink +"' + target='_blank'>see reference</a></<br>");
 
 		correctCount++;
 		count++;
@@ -150,8 +150,8 @@ $(document).ready(function() {
 	function incorrectResponse() {
 		$("#answers").empty();
 		$("#question").html("<h2>Incorrect</h2>");
-		$("#question").append("<div> The correct answer was: " + questionsArr[count].correctAnswer + "</div");
-		$("#question").append("<a href='"+ questionsArr[count].correctLink +"' + target='_blank'>see reference</a></<br>>");
+		$("#question").append("<div> The correct answer was: " + questionsArr[count].correctAnswer + "</div </<br>");
+		$("#question").append("<a href='"+ questionsArr[count].correctLink +"' + target='_blank'>see reference</a></<br>");
 		incorrectCount++;
 		count++;
 		clearInterval(questionInt);
@@ -199,23 +199,16 @@ $(document).ready(function() {
 		$("#answers").empty();
 		$("#response").empty();
 		$("#question").html(questionsArr[count].question)
-		for (var i = 0; i < questionsArr[count].possibleAnswers.length; i++) {
-			$("#answers").append("<input type='radio' class='option-button' data-name='"+ questionsArr[count].possibleAnswers[i]+"'>" + questionsArr[count].possibleAnswers[i] + "</br>");
+
+	for (var i = 0; i < questionsArr[count].possibleAnswers.length; i++) {
+			$("#answers").append("<input required type='radio' class='option-button' data-name='"+ questionsArr[count].possibleAnswers[i]+"'>" + questionsArr[count].possibleAnswers[i] + "</br>");
 		};
-		$("#answers").append("<button class='submit-button'><strong>Submit</strong></button>");
-
-
-		$(".option-button").on("click",function(){
-			userAnswer = $(this).attr("data-name");
-			$(this).toggleClass('red');
-		});
-
-		$(".submit-button").on("click",function(){
-
+		$("#answers").append(`<input type="submit" class='submit-button' value="Submit" />`);
+		$("form").on("submit",function(e){
+            e.preventDefault();
 			if (userAnswer === questionsArr[count].correctAnswer) {
 					correctResponse()
 				}
-
 				else  {
 					incorrectResponse();
 				}
