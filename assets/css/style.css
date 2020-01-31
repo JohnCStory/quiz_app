@@ -68,6 +68,24 @@ header .question-and-score {
 	padding: 4px;
 }
 
+.answerOptionRadio {
+display: flex;
+align-items: center;
+flex-direction: row-reverse;
+justify-content: flex-end;
+opacity: 0.8;
+border-radius: 3%;
+padding: 12px 30px 12px;
+text-align: left;
+font-size: 25px;
+color: white;
+cursor: pointer;
+height: 50px;
+width: 100%;
+position: relative;
+margin-left: 0px;
+}
+
 #startButton {
 	padding: 4px;
 	border-radius: 2px;
