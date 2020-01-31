@@ -199,11 +199,25 @@ $(document).ready(function() {
 		$("#answers").empty();
 		$("#response").empty();
 		$("#question").html(questionsArr[count].question)
-
-	for (var i = 0; i < questionsArr[count].possibleAnswers.length; i++) {
-			$("#answers").append("<input required type='radio' class='option-button' data-name='"+ questionsArr[count].possibleAnswers[i]+"'>" + questionsArr[count].possibleAnswers[i] + "</br>");
-		};
-		$("#answers").append(`<input type="submit" class='submit-button' value="Submit" />`);
+                 
+		$("#answers").append(`<form class="answerOptions">
+        <fieldset>
+          <label class="answerOptionRadio">${questionsArr[count].possibleAnswers[0]}
+            <input type="radio"  class='option-button' name="answerOption" value="${questionsArr[count].possibleAnswers[0]}" required>
+          </label>
+          <label class="answerOptionRadio">${questionsArr[count].possibleAnswers[1]}
+            <input type="radio"   class='option-button' name="answerOption" value="${questionsArr[count].possibleAnswers[1]}" required>
+          </label>
+          <label class="answerOptionRadio">${questionsArr[count].possibleAnswers[2]}
+            <input type="radio"   class='option-button' name="answerOption" value="${questionsArr[count].possibleAnswers[2]}" required>
+          </label>
+          <label class="answerOptionRadio">${questionsArr[count].possibleAnswers[3]}
+            <input type="radio"   class='option-button' name="answerOption" value="${questionsArr[count].possibleAnswers[3]}" required>
+          </label>
+            <button class="answerSubmitButton" type="submit">Check it</button>
+          </fieldset>
+          </form>`);
+                
 		$("form").on("submit",function(e){
             e.preventDefault();
 			if (userAnswer === questionsArr[count].correctAnswer) {
