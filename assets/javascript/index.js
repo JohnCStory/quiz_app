@@ -220,7 +220,8 @@ $(document).ready(function() {
                 
 		$("form").on("submit",function(e){
             e.preventDefault();
-			if (userAnswer === questionsArr[count].correctAnswer) {
+			let userAnswer = $('input[name="answerOption"]:checked').val();
+            if (userAnswer === questionsArr[count].correctAnswer) {
 					correctResponse()
 				}
 				else  {
